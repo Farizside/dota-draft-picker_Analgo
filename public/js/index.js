@@ -77,7 +77,6 @@ document.querySelectorAll(".picker").forEach(element => {
 document.querySelector('[name="generate"]').addEventListener('click', async (e) => {
   e.preventDefault();
   const selectedHeroes = []
-  e.target.classList.add("is-loading btn-disabled");
   
   document.querySelectorAll(".picker-hero-ids")
     .forEach((element) => {
@@ -99,6 +98,5 @@ document.querySelector('[name="generate"]').addEventListener('click', async (e) 
 					roles: hero.roles,
 				});
   });
-  if(heroes) e.target.classList.remove("is-loading btn-disabled");
 document.querySelector("#recomend-hero-container").innerHTML =heroCards ;
 });
