@@ -1,0 +1,23 @@
+<table class="table text-light">
+  <thead>
+    <tr>
+      <th scope="col">Image Hero</th>
+      <th scope="col">Name Hero</th>
+      <th scope="col">Ability Hero</th>
+      <th scope="col">Role Hero</th>
+    </tr>
+  </thead>
+  <tbody id="heroes-list-table">
+    <% heroes.forEach(item=>{%>
+      <tr class="animate-hover-select">
+        <td style="display:none"><%=item.id%></td>
+        <td><img src="<%=baseUrl%>/assets/list_1.svg" id="hero-list-img" alt=""></td>
+        <td id="hero-list"><%=item.name%></td>
+        <td class=""><img src="<%=baseUrl%>/assets/<%=item.ability%>.svg" id="hero-list-ability" width="40"></td>
+        <td>
+              <p style="background: url('<%=baseUrl%>/assets/role_rev.svg') no-repeat; height:2.5em" class=" text-white text-center" id="hero-list-role"><%= item.roles[0] %></p>
+          </td>
+        </tr>
+      <% }) %> 
+  </tbody>
+</table>

@@ -1,9 +1,10 @@
-const axios = require ("../config/axios/instance")
+const axios = require ("../config/axios/instance");
+const formatDataHeroes = require("../utils/formatDataHeroes");
 module.exports = {
   getHeroes: async (req, res) => {
     const { data } = await axios.get("/heroes");
-    const heroes = data.map((hero) => ({ id: hero.id, name: hero.localized_name,roles: hero.roles}))
-    return res.render("index", { heroes });
+    const heroes = await formatDataHeroes(data)
+    return res.render("index", { heroes, recomendHeroes: [] });
   },
   getWinRate: async (data) => {
     
@@ -11,10 +12,14 @@ module.exports = {
   },
   searchHeroes: async (req, res) => {
     try {
-      
+      const roles = [
+			{ name: "Carry",  count: 2 },
+			{ name: "Durable", count: 1 },
+			{ name: "Support", count: 2 },
+		];
       const { hero } = req.body
       const { data } = await axios.get("/heroes");
-      const heroesSplited = hero.split(",")
+      const heroesSplited = [...hero].filter(hero => hero !== '0')
       const heroes = [...data]
       const heroesWithWinRate = heroesSplited.map(async (element,index) => {
         const { data: matchUp } = await axios.get(`/heroes/${element}/matchups`)
@@ -27,16 +32,30 @@ module.exports = {
           return hero
         })
       }); 
-      console.log(heroesWithWinRate)
       const result = await heroesWithWinRate[heroesWithWinRate.length - 1]
       const heroesWithCountWinRate = result.map(hero => {
         const countWinRate = parseFloat(hero.winRate.reduce((a, b) => a + b, 0).toFixed(2))
         return {
           ...hero,
-          countWinRate
+          cont_win_rate:(countWinRate - 50* heroesSplited.length).toFixed(2)
         }
       })
-        res.json(heroesWithCountWinRate);
+      // sort by count winrate from hight to lowest
+      heroesWithCountWinRate.sort((a, b) => b.cont_win_rate - a.cont_win_rate)
+      if (heroesSplited.length < 5) {
+        const heroesWithHighestWinRate = heroesWithCountWinRate.slice(0, 10)
+        return res.json({recomendHeroes: heroesWithHighestWinRate});
+      }
+      const finalTeams = []
+      heroesWithCountWinRate.forEach(element => {
+        roles.forEach(role => {
+          if (element.roles.includes(role.name) && role.count > 0) {
+            role.count -= 1
+            finalTeams.push(element)
+          }
+        })
+      });
+        return res.json({ recomendHeroes:finalTeams });
     } catch (error) {
       console.log(error)
       res.json({

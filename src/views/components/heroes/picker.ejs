@@ -1,0 +1,24 @@
+<div class="col picker picker-<%= id  %>">
+  <!-- header -->
+  <div class="card-header desc-card" >
+    <div class="row ">
+      <div class="d-none picker-hero-ids" id="picker-hero-id-<%= id %>" >0</div>
+      <div class="col-9"id="picker-hero-name-<%= id %>">
+        HeroName
+      </div>
+      <div class="col-3">
+        <img src="<%=baseUrl%>/assets/strength.svg" id="picker-hero-ability-<%= id %>">    
+      </div>
+    </div>
+  </div>
+  <!-- body -->
+    <div class="text-center img-desc">
+      <a href="#popup">
+        <img src="<%=baseUrl%>/assets/empty.svg" id="picker-hero-img-<%= id %>" class="img-fluid" alt="..." >
+      </a>
+    </div>
+    <!-- footer -->
+    <div class="card-footer desc-card" id="picker-items">
+       <!-- <img src="<%=baseUrl%>/assets/io_desc.svg"> -->
+    </div>
+</div>

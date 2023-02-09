@@ -1,17 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Search Hero</h1>
-  <hr>
-  <form action="/search" method="POST">
-    <input type="text" name="hero" placeholder="Search Hero">
-    <button type="submit">Search</button>
-    <%= baseUrl %> 
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%=baseUrl%>/css/style.css">
+
+    <title>Website Tugas Besar Analisis Algoritma</title>
+  </head>
+  <body class="mt-5">
+    <div class="container">
+      <nav class="navbar fixed-top navbar-expand-lg header">
+        <a class="navbar-brand" href="#">
+             <img src="<%=baseUrl%>/assets/logo-dota.svg" width="300" height="40" alt="">
+        </a>
+      </nav>
+
+      <section class="pick-team">
+        <div class="container">
+
+          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" id="pickers">
+            <% for(let i=1; i<=5; i++){ %>
+            <%- include('../components/heroes/picker',{id:i}) -%>
+            <% } %>
+          </div>
+
+          <div class="d-grid gap-2 col-4 mx-auto">
+            <button class="btn btn-primary" type="button" name="generate">Generate</button>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="line">
+        <img src="<%=baseUrl%>/assets/line.svg">
+      </div>
+
+      <section class="suggest">
+        <div class="container">
+          <div class="row mb-4 pt-4">
+            <div class="col text-center pick">
+              <h2>Pick Suggestions</h2>
+            </div>
+          </div>
+  
+          <div class="row mb-4" id="recomend-hero-container"></div>
+      </section>
+
+
+      <div class="popup" id="popup">
+        <div class="ini-pop">
+          <div class="popup-header">
+            <div class="row mb-4 ">
+              <div class="col-md">
+                <ul class="nav justify-content-center li-pick">
+                  <li class="nav-item popup_a">
+                    List of Heroes
+                  </li>
+                  <li class="nav-item">
+                    <form  id="form">
+                      <input type="text" placeholder="Search" id="search-hero-table" class="search">
+                  </form>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+  
+          <div class="popup-content overflow-scroll "style="height:50vh" >
+            <%- include('../components/heroes/table.ejs',heroes) %>
+          </div>
+  
+          <div class="d-flex justify-content-center mb-4">
+            <a href= "#" class="btn btn-cancel">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="text-light foot">
+      <div class="container">
+        <div class="row pt-2">
+          <div class="col text-center">
+            <h5>Copyright 2023.</h5>
+            <ul class="nav justify-content-center li-foot">
+              <li class="nav-item">
+                <a>10121127 - Lutfian</a>
+              </li>
+              <li class="nav-item">
+                <a>10121142 - Asifa</a>
+              </li>
+              <li class="nav-item">
+                <a>10121143 - Fariz</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="<%=baseUrl%>/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </body>
 </html>

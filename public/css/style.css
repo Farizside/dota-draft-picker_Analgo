@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+  font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #151522;
+}
+
+/*.container{
+    width: 1140px;
+    margin: 0 auto;
+}*/
+
+.section {
+  min-height: 420px;
+}
+
+.header {
+  width: 100%;
+  background-image: linear-gradient(#151522, #4B4B6C);
+}
+
+.pick-team {
+  padding-top: 96px;
+}
+
+.img-desc {
+  background: #272639;
+}
+
+.desc {
+  background: #3C3B4E;
+  color: #FEFBF6;
+}
+
+.desc-card {
+  background: #3C3B4E;
+  color: #FEFBF6;
+  height: 48px;
+}
+
+.head {
+  column-gap: 114px;
+}
+
+.head1 {
+  column-gap: 56px;
+}
+
+.btn-primary {
+  padding: 12px 12px;
+  margin: 64px 0;
+  font-size: 24px;
+  font-weight: 600;
+  background: #B7251B;
+  border-radius: 20px;
+}
+
+.pick {
+  font-weight: 600;
+  font-size: 50px;
+  font-style: normal;
+  line-height: 75px;
+  color: #FEFBF6;
+}
+
+.foot {
+  background: linear-gradient(180deg, #272639 30%, rgba(39, 38, 57, 0) 100%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  color: #FEFBF6;
+  align-items: center;
+}
+
+.li-foot {
+  padding: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.line {
+  padding: auto;
+  margin: auto;
+  top: 832px;
+}
+
+.li-pick {
+  margin: auto;
+  align-content: center;
+  background-color: #3C3B4E;
+  color: #FEFBF6;
+}
+
+
+/*Pop Up*/
+.popup {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(229, 229, 229, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.3s;
+}
+
+.popup_a {
+  font-size: 36px;
+  font-weight: 600;
+
+}
+
+.search {
+  background-color: #272639;
+  width: 250px;
+  border: 2px solid;
+  padding: 6px;
+  border-radius: 8px;
+  color: #FEFBF6;
+}
+
+.li-pick {
+  padding: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 300px;
+}
+
+.role {
+  clip-path: polygon(25% 25%, 80.38% 25%, 80.38% 48.25%, 74.63% 52.5%, 47.13% 52.5%, 19.25% 52.5%, 19.25% 30%);
+  background-color: #3C3B4E;
+  border-color: #B7251B;
+}
+
+.ini-pop {
+  width: 800px;
+  background-color: #3C3B4E;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.25);
+  opacity: 0;
+
+  transition: all 0.5s 0.1s;
+}
+
+.btn-cancel {
+  background: transparent;
+  border-color: #B7251B;
+  border-radius: 12px;
+  width: 150px;
+  font-size: 24px;
+  color: #FEFBF6;
+}
+
+#popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+#popup:target .ini-pop {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.animate-hover-select:hover {
+  scale: 1.1;
+  transition: 0.5s;
+  z-index: 99;
+}
+.tr-selected{
+  background-color: #209b129e;
+  color: #FEFBF6;
+}

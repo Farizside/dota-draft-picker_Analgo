@@ -1,0 +1,20 @@
+ <div class="card mb-3 li-pick" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="assets/pick_1-1.svg" id="hero-image" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title" id="hero-name"><%=hero.localized_name%></h5>
+        <p class="card-text" id="hero-winrate">(<%=hero.cont_win_rate %> )</p>
+        <p class="card-text">
+          <div class="card text-white" style="background: #3C3B4E;">
+            <div class="card-img-overlay" id="hero-roles">
+              <p class="card-text" id="hero-role"><%=hero.roles%></p>
+            </div>
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
