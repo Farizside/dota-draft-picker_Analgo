@@ -5,7 +5,7 @@ module.exports = async (data) => {
 		roles: hero.roles,
 		ability:
 			hero.primary_attr === "agi"
-				? "green"
+				? "parang"
 				: hero.primary_attr === "str"
 				? "strength"
 				: "alliance",

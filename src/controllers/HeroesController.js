@@ -32,16 +32,21 @@ module.exports = {
           return hero
         })
       }); 
-      const result = await heroesWithWinRate[heroesWithWinRate.length - 1]
-      const heroesWithCountWinRate = result.map(hero => {
-        const countWinRate = parseFloat(hero.winRate.reduce((a, b) => a + b, 0).toFixed(2))
+      const heroesWithWinRatep = await Promise.all(heroesWithWinRate);
+      const result = await  heroesWithWinRatep.filter((hero) => {
+        return hero.filter((item) => item.winRate.length == heroesSplited.length);
+      })[0]
+      if(!result) return res.json({recomendHeroes:[]})
+      const heroesWithCountWinRate = result.map( hero => {
+        const countWinRate = parseFloat(  hero.winRate.reduce((a, b) => a + b, 0).toFixed(2))
         return {
           ...hero,
-          cont_win_rate:(countWinRate - 50* heroesSplited.length).toFixed(2)
+          cont_win_rate:(countWinRate - (50* heroesSplited.length)).toFixed(2)
         }
       })
       // sort by count winrate from hight to lowest
       heroesWithCountWinRate.sort((a, b) => b.cont_win_rate - a.cont_win_rate)
+      console.log(heroesWithCountWinRate)
       if (heroesSplited.length < 5) {
         const heroesWithHighestWinRate = heroesWithCountWinRate.slice(0, 10)
         return res.json({recomendHeroes: heroesWithHighestWinRate});
