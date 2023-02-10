@@ -1,6 +1,6 @@
 // if user click tr in table then use css tr-selected
 const card = ({name,win_rate,roles}) => {
-  return ` <div class="card mb-3 li-pick" style="max-width: 540px;">
+  return ` <div class="card my-4 li-pick col mt-0" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="assets/pick_1-1.svg" id="hero-image" class="img-fluid rounded-start" alt="...">
@@ -10,9 +10,9 @@ const card = ({name,win_rate,roles}) => {
         <h5 class="card-title" id="hero-name">${name}</h5>
         <p class="card-text" id="hero-winrate">(${win_rate})</p>
         <p class="card-text">
-          <div class="card text-white" style="background: #3C3B4E;">
-            <div class="card-img-overlay" id="hero-roles">
-              <p class="card-text" id="hero-role">${roles}</p>
+          <div class=" text-white" style="background: #3C3B4E;">
+            <div class="row g-2 row-cols-3 mx-auto px-auto" id="hero-roles">
+              ${roles}
             </div>
           </div>
         </p>
@@ -20,6 +20,9 @@ const card = ({name,win_rate,roles}) => {
     </div>
   </div>
 </div>`;
+}
+const roleCard = (role) => {
+  return `<p  class=" text-white box-role text-center py-1 px-2 col mx-1 " data-role="${role}" id="hero-list-role">${role}</p>`;
 }
 
 let selectedPicker =0
@@ -91,11 +94,14 @@ document.querySelector('[name="generate"]').addEventListener('click', async (e) 
   }).then((res) => res.json());
   let heroCards =""
   heroes.recomendHeroes.forEach((hero) => {
-		
+    role=""
+    hero.roles.forEach(item => {
+      role += roleCard(item)
+    })
 				heroCards += card({
 					name: hero.localized_name,
 					win_rate: hero.cont_win_rate,
-					roles: hero.roles,
+					roles: role,
 				});
   });
 document.querySelector("#recomend-hero-container").innerHTML =heroCards ;
