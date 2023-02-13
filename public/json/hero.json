@@ -1,0 +1,60 @@
+[
+  {
+    "name":"Anti-Mage",
+    "label":"antimage"
+  },{
+    "name":"Centaur Warrunner",
+    "label":"centaur"
+  },{
+    "name":"Clockwerk",
+    "label":"rattletrap"
+  },{
+    "name":"Doom",
+    "label":"doom_bringer"
+  },{
+    "name":"Io",
+    "label":"wisp"
+  },{
+    "name":"Lifestealer",
+    "label":"life_stealer"
+  },{
+    "name":"Magnus",
+    "label":"magnataur"
+  },{
+    "name":"Nature's Prophet",
+    "label":"furion"
+  },{
+    "name":"Necrophos",
+    "label":"necrolyte"
+  },{
+    "name":"Outworld Destroyer",
+    "label":"obsidian_destroyer"
+  },{
+    "name":"Queen of Pain",
+    "label":"queenofpain"
+  },{
+    "name":"Shadow Fiend",
+    "label":"nevermore"
+  },{
+    "name":"Timbersaw",
+    "label":"shredder"
+  },{
+    "name":"Treant Protector",
+    "label":"treant"
+  },{
+    "name":"Underlord",
+    "label":"abyssal_underlord"
+  },{
+    "name":"Vengeful Spirit",
+    "label":"vengefulspirit"
+  },{
+    "name":"Windranger",
+    "label":"windrunner"
+  },{
+    "name":"Wraith King",
+    "label":"skeleton_king"
+  },{
+    "name":"Zeus",
+    "label":"zuus"
+  }
+]

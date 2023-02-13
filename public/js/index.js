@@ -1,9 +1,9 @@
 // if user click tr in table then use css tr-selected
-const card = ({name,win_rate,roles}) => {
+const card = ({ name, win_rate, roles, label }) => {
   return ` <div class="card my-4 li-pick col mt-0" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="assets/pick_1-1.svg" id="hero-image" class="img-fluid rounded-start" alt="...">
+      <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${label.toLowerCase().split(' ').join('_') }.png" id="hero-image" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -101,7 +101,8 @@ document.querySelector('[name="generate"]').addEventListener('click', async (e) 
 				heroCards += card({
 					name: hero.localized_name,
 					win_rate: hero.cont_win_rate,
-					roles: role,
+          roles: role,
+          label: hero.label
 				});
   });
 document.querySelector("#recomend-hero-container").innerHTML =heroCards ;

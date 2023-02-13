@@ -11,7 +11,7 @@
     <% heroes.forEach(item=>{%>
       <tr class="animate-hover-select">
         <td style="display:none"><%=item.id%></td>
-        <td><img src="<%=baseUrl%>/assets/list_1.svg" id="hero-list-img" alt=""></td>
+        <td><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/<%= item.label.toLowerCase().split(' ').join('_') %>.png" id="hero-list-img" style="width:90%" alt=""></td>
         <td id="hero-list"><%=item.name%></td>
         <td class=""><img src="<%=baseUrl%>/assets/<%=item.ability%>.svg" id="hero-list-ability" width="40"></td>
         <td class="">

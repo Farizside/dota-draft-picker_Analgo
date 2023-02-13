@@ -1,5 +1,7 @@
 const axios = require ("../config/axios/instance");
 const formatDataHeroes = require("../utils/formatDataHeroes");
+const heroeLabel = require("../../public/json/hero.json");
+
 module.exports = {
   getHeroes: async (req, res) => {
     const { data } = await axios.get("/heroes");
@@ -38,15 +40,22 @@ module.exports = {
       })[0]
       if(!result) return res.json({recomendHeroes:[]})
       const heroesWithCountWinRate = result.map( hero => {
-        const countWinRate = parseFloat(  hero.winRate.reduce((a, b) => a + b, 0).toFixed(2))
+        const countWinRate = parseFloat(hero.winRate.reduce((a, b) => a + b, 0).toFixed(2))
+        let label = hero.localized_name;
+        heroeLabel.forEach((heroData) => {
+			label =
+				heroData.name === hero.localized_name
+					? heroData.label
+					: label;
+		});
         return {
           ...hero,
+          label: hero.localized_name,
           cont_win_rate:(countWinRate - (50* heroesSplited.length)).toFixed(2)
         }
       })
       // sort by count winrate from hight to lowest
       heroesWithCountWinRate.sort((a, b) => b.cont_win_rate - a.cont_win_rate)
-      console.log(heroesWithCountWinRate)
       if (heroesSplited.length < 5) {
         const heroesWithHighestWinRate = heroesWithCountWinRate.slice(0, 10)
         return res.json({recomendHeroes: heroesWithHighestWinRate});
@@ -54,7 +63,7 @@ module.exports = {
       const finalTeams = []
       heroesWithCountWinRate.forEach(element => {
         roles.forEach(role => {
-          if (element.roles.includes(role.name) && role.count > 0) {
+          if (element.roles.includes(role.name) && role.count > 0 && (finalTeams.includes(element) == false)) {
             role.count -= 1
             finalTeams.push(element)
           }
