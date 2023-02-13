@@ -6,7 +6,6 @@ module.exports = async (data) => {
 		heroes.forEach((heroData) => { 
 			label = heroData.name === hero.localized_name ? heroData.label : label;
 		})
-		console.log(label)
 		return {
 			id: hero.id,
 			name: hero.localized_name,
